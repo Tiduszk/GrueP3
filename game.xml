@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<game>
+	<title>TITTTTTTTTTTLLLLLLLLLLEEEEEEEEEE</title>
+	<description>you are standing outside and facing an erie house in the night.</description>
+	<question>Will you proceed and open door?</question>
+	<answer>yes, you are now in the main room of the house</answer>
+	<answer>no, are you dumb? who doesnt go in.. shame on you!</answer>
+
+	<description>you are standing outside and facing an erie house in the night.</description>
+        <question>Will you proceed and open door?</question>
+        <answer>yes, you are now in the main room of the house</answer>
+        <answer>no, are you dumb? who doesnt go in.. shame on you!</answer>
+
+
+</game>
