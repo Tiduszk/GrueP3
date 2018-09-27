@@ -1,0 +1,131 @@
+<?xml version="1.0"?>
+<game>
+	<title>The Mansion</title>
+	<version>1.0</version>
+	
+	<room>
+		<name>Enterance Hall</name>
+		<description>A grand atrium with many doors and a large staircase.</description>
+		<detail>As you look around the atrium, you see doors to the north, east, and south, and a staircase leading up. There are several painting on the walls, and a wooden rod on the floor</detail>
+		<connections>
+			<north>Kitchen</north>
+			<northeast>null</northeast>
+			<east>Dining room</east>
+			<southeast>null</southeast>
+			<south>Courtyard</south>
+			<southwest>null</southwest>
+			<west>null</west>
+			<northwest>null</northwest>
+			<up>null</up>
+			<down>null</down>
+		</connections>
+		<interact>
+			<item>Wooden Rod</item>
+			<observe>Painting</observe>
+		</interact>
+	</room>
+
+
+
+	<room>
+		<name>Kitchen</name>
+		<description>the biggest damn kitchen i've ever seen</description>
+		<detail>There is a burning smell coming from the oven, and it seems as everyone just left.. plates and food are still out</detail>
+		<connections>
+			<north>null</north>
+			<northeast>null</northeast>
+			<east>Dining room</east>
+			<southeast>null</southeast>
+			<south>Enterance Hall</south>
+			<southwest>null</southwest>
+			<west>bathroom</west>
+			<northwest>null</northwest>
+			<up>null</up>
+			<down>null</down>
+		</connections>
+		<interact>
+			<item>note</item>
+			<observe>oven</observe>
+		</interact>
+	</room>
+
+
+	<room>
+		<name>bathroom</name>
+		<description>simple bathroom one sink, toilet and shower..</description>
+		<detail>the medicine cabinet was left open and the sink faucet is running</detail>
+		<connections>
+			<north>null</north>
+			<northeast>null</northeast>
+			<east>kitchen</east>
+			<southeast>null</southeast>
+			<south>null</south>
+			<southwest>null</southwest>
+			<west>null</west>
+			<northwest>null</northwest>
+			<up>null</up>
+			<down>null</down>
+		</connections>
+		<interact>
+			<item>sink faucet</item>
+			<observe>medicine cabinet</observe>
+		</interact>
+	</room>
+
+	<room>
+		<name>dining room</name>
+		<description>room with long wooden table with 6 chairs</description>
+		<detail>details details details details</detail>
+		<connections>
+			<north>north</north>
+			<northeast>null</northeast>
+			<east>east</east>
+			<southeast>null</southeast>
+			<south>south</south>
+			<southwest>null</southwest>
+			<west>west</west>
+			<northwest>null</northwest>
+			<up>null</up>
+			<down>null</down>
+		</connections>
+		<interact>
+			<item>some item</item>
+			<observe>observe something</observe>
+		</interact>
+	</room>
+
+	<room>
+		<name>courtyard</name>
+		<description>a yard of court</description>
+		<detail>many many trees</detail>
+		<connections>
+			<north>entrance hall</north>
+			<northeast>null</northeast>
+			<east>null</east>
+			<southeast>null</southeast>
+			<south>null</south>
+			<southwest>null</southwest>
+			<west>null</west>
+			<northwest>null</northwest>
+			<up>null</up>
+			<down>null</down>
+		</connections>
+		<interact>
+			<item> some item</item>
+			<observe>something</observe>
+		</interact>
+	</room> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+</game>
