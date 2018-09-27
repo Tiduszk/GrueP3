@@ -89,7 +89,9 @@ public class Main {
 					break;
 					
 				case "northeast":
+				case "north east":
 				case "ne":
+				case "n e":
 					room_name = world[current_room].connectedTo(1);
 					current_room = get_position(world , room_name , current_room);
 					break;
@@ -101,7 +103,9 @@ public class Main {
 					break;
 					
 				case "southeast":
+				case "south east":
 				case "se":
+				case "s e":
 					room_name = world[current_room].connectedTo(3);
 					current_room = get_position(world , room_name , current_room);
 					break;
@@ -113,7 +117,9 @@ public class Main {
 					break;
 					
 				case "southwest":
+				case "south west":
 				case "sw":
+				case "s w":
 					room_name = world[current_room].connectedTo(5);
 					current_room = get_position(world , room_name , current_room);
 					break;
@@ -125,7 +131,9 @@ public class Main {
 					break;
 					
 				case "northwest":
+				case "north west":
 				case "nw":
+				case "n w":
 					room_name = world[current_room].connectedTo(7);
 					current_room = get_position(world , room_name , current_room);
 					break;
