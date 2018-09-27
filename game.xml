@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<game>
+	<title>The Mansion</title>
+	
+	<description>You are standing outside and facing an erie house in the night.</description>
+	<question>Will you proceed and open door?</question>
+	<answer>yes</answer> 
+	<next>you are now in the main room of the house</next>
+	<answer>no</answer>
+	<next>are you dumb? who doesnt go in.. shame on you!</next>
+
+	<description>In the main room there seems to be some kind of switch.</description>
+        <question>press the switch?</question>
+	<answer>yes</answer>
+	<next>a secret passage opens in the wall</next>
+	<answer>no</answer>
+	<next>who doesnt press the switch?</next>
+
+	<description>The passage goes into the cellar of the mansion, there are dead bodies</description>
+	<question>run up the stairs?</question>
+	<answer>yes</answer>
+	<next>proceeding up the stairs quickly!</next>
+	<answer>no</answer>
+	<next>i think you should go up the stairs</next>
+	
+	<description>im in a room, the main room is east, and a another door is west</description>
+	<question>proceed east or west?</question>
+	<answer>east</answer>
+	<next>back in the main room</next>
+	<answer>west</answer>
+	<next>the door is locked </next>
+
+	
+</game>
