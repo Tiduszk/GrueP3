@@ -1,3 +1,5 @@
+//Made by Zachary Clark
+
 package engine;
 
 import java.lang.reflect.Array;
@@ -18,55 +20,32 @@ public class Main {
 		String s = new String();
 		Scanner in = new Scanner(System.in);
 		
-		//0=North,1=NorthEast,2=East,3=SouthEast,4=South,5=SouthWest,6=West,7=NorthWest,8=Up,9=Down
-		/*String connections[] = new String[10];
-		
-		String name = "Kitchen";
-		String description = "You have entered the Kitchen";
-		String detail = "You can go northeast to the enterance, or east to the bedroom";
-		connections[1] = "Enterance";
-		connections[2] = "Bedroom";
-		
-		world[0] = new Room(name , description , detail , connections);
-		connections = new String[10];
-		
-		name = "Enterance";
-		description = "You have entered the Enterance";
-		detail = "You can go southeast to the bedroom, or southwest to the kitchen";
-		connections[3] = "Bedroom";
-		connections[5] = "Kitchen";
-		
-		world[1] = new Room(name , description , detail , connections);
-		connections = new String[10];
-		
-		name = "Bedroom";
-		description = "You have entered the Bedroom";
-		detail = "You can go west to the enterance, or northwest to the kitchen";
-		connections[6] = "Enterance";
-		connections[7] = "Kitchen";
-		
-		world[2] = new Room(name , description , detail , connections);
-		connections = new String[10];*/
-		
 		System.out.println("Enter the name of the xml file: ");
 		s = in.nextLine();
 		
+		//0=North,1=NorthEast,2=East,3=SouthEast,4=South,5=SouthWest,6=West,7=NorthWest,8=Up,9=Down
 		world = readxml.create_world(s);
 		
 		s = new String();
 		
+		//Main game loop
 		while(!quit) {
+			
+			//Displays the description of the room when you enter it
 			if(repeat) {
 				System.out.println(world[current_room].description);
 			}
 			
+			//Reset flags
 			repeat = true;
 			complete = false;
 			
+			//Read input from user
 			if(in.hasNextLine()) {
 				s = in.nextLine();
 			}
 				
+			//Jump directly to a room if the user types the name of a room
 			for(int i = 0; i < Array.getLength(world); i++) {
 				if(world[i].name.equalsIgnoreCase(s)) {
 					current_room = i;
@@ -74,6 +53,7 @@ public class Main {
 				}
 			}
 			
+			//Determines what action to take based on the user's input
 			if(!complete) {
 				switch(s.toLowerCase()) {
 				case "observe":
@@ -89,7 +69,9 @@ public class Main {
 					break;
 					
 				case "northeast":
+				case "north east":
 				case "ne":
+				case "n e":
 					room_name = world[current_room].connectedTo(1);
 					current_room = get_position(world , room_name , current_room);
 					break;
@@ -101,7 +83,9 @@ public class Main {
 					break;
 					
 				case "southeast":
+				case "south east":
 				case "se":
+				case "s e":
 					room_name = world[current_room].connectedTo(3);
 					current_room = get_position(world , room_name , current_room);
 					break;
@@ -113,7 +97,9 @@ public class Main {
 					break;
 					
 				case "southwest":
+				case "south west":
 				case "sw":
+				case "s w":
 					room_name = world[current_room].connectedTo(5);
 					current_room = get_position(world , room_name , current_room);
 					break;
@@ -125,7 +111,9 @@ public class Main {
 					break;
 					
 				case "northwest":
+				case "north west":
 				case "nw":
+				case "n w":
 					room_name = world[current_room].connectedTo(7);
 					current_room = get_position(world , room_name , current_room);
 					break;
@@ -176,11 +164,12 @@ public class Main {
 
 	}
 	
+	//Returns the position in the world array of the selected room
 	static int get_position(Room[] world , String name , int current_position) {
 		int current_room = current_position;
 		
 		for(int i = 0; i < Array.getLength(world); i++) {
-			if(world[i].name.equals(name)) {
+			if(world[i].name.equalsIgnoreCase(name)) {
 				current_room = i;
 			}
 		}
