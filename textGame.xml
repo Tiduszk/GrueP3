@@ -4,17 +4,17 @@
 	<version>1.0</version>
 	
 	<room>
-		<name>Enterance Hall</name>
-		<description>A grand atrium with many doors and a large staircase.</description>
-		<detail>As you look around the atrium, you see doors to the north, east, and south, and a staircase leading up. There are several painting on the walls, and a wooden rod on the floor</detail>
+		<name>entrance</name>
+		<description>A grand atrium</description>
+		<detail>As you look around the atrium you see several doors and paintings along the walls</detail>
 		<connections>
-			<north>Kitchen</north>
-			<northeast>null</northeast>
-			<east>Dining room</east>
+			<north>hallway</north>
+			<northeast>dining room</northeast>
+			<east>kitchen</east>
 			<southeast>null</southeast>
-			<south>Courtyard</south>
+			<south>courtyard</south>
 			<southwest>null</southwest>
-			<west>null</west>
+			<west>bathroom</west>
 			<northwest>null</northwest>
 			<up>null</up>
 			<down>null</down>
@@ -32,13 +32,13 @@
 		<description>the biggest damn kitchen i've ever seen</description>
 		<detail>There is a burning smell coming from the oven, and it seems as everyone just left.. plates and food are still out</detail>
 		<connections>
-			<north>null</north>
+			<north>dining room</north>
 			<northeast>null</northeast>
-			<east>Dining room</east>
+			<east>null</east>
 			<southeast>null</southeast>
-			<south>Enterance Hall</south>
+			<south>null</south>
 			<southwest>null</southwest>
-			<west>bathroom</west>
+			<west>entrance</west>
 			<northwest>null</northwest>
 			<up>null</up>
 			<down>null</down>
@@ -57,7 +57,7 @@
 		<connections>
 			<north>null</north>
 			<northeast>null</northeast>
-			<east>kitchen</east>
+			<east>entrance</east>
 			<southeast>null</southeast>
 			<south>null</south>
 			<southwest>null</southwest>
@@ -74,16 +74,16 @@
 
 	<room>
 		<name>dining room</name>
-		<description>room with long wooden table with 6 chairs</description>
-		<detail>details details details details</detail>
+		<description>room with long wooden table with 12 chairs</description>
+		<detail>there are two doors and an erie feeling</detail>
 		<connections>
-			<north>north</north>
+			<north>null</north>
 			<northeast>null</northeast>
-			<east>east</east>
+			<east>null</east>
 			<southeast>null</southeast>
-			<south>south</south>
-			<southwest>null</southwest>
-			<west>west</west>
+			<south>kitchen</south>
+			<southwest>entrance</southwest>
+			<west>null</west>
 			<northwest>null</northwest>
 			<up>null</up>
 			<down>null</down>
@@ -96,10 +96,10 @@
 
 	<room>
 		<name>courtyard</name>
-		<description>a yard of court</description>
-		<detail>many many trees</detail>
+		<description>a large outdoor space with a garden</description>
+		<detail>there is a pathway leading through the garden</detail>
 		<connections>
-			<north>entrance hall</north>
+			<north>entrance</north>
 			<northeast>null</northeast>
 			<east>null</east>
 			<southeast>null</southeast>
@@ -116,11 +116,72 @@
 		</interact>
 	</room> 
 
+	<room>
+		<name>hallway</name>
+		<description>a hallway with 2 doors</description>
+		<detail>a long dark hallway, seems to go nowhere</detail>
+		<connections>
+			<north>null</north>
+			<northeast>null</northeast>
+			<east>null</east>
+			<southeast>null</southeast>
+			<south>entrance</south>
+			<southwest>null</southwest>
+			<west>closet</west>
+			<northwest>null</northwest>
+			<up>bedroom</up>
+			<down>null</down>
+		</connections>
+		<interact>
+			<item> some item</item>
+			<observe>something</observe>
+		</interact>
+	</room> 
+
+	<room>
+		<name>bedroom</name>
+		<description>a room fit for a king</description>
+		<detail>theres a large bed with the fire still burning in the fireplace</detail>
+		<connections>
+			<north>null</north>
+			<northeast>null</northeast>
+			<east>null</east>
+			<southeast>null</southeast>
+			<south>null</south>
+			<southwest>null</southwest>
+			<west>null</west>
+			<northwest>null</northwest>
+			<up>null</up>
+			<down>hallway</down>
+		</connections>
+		<interact>
+			<item> some item</item>
+			<observe>something</observe>
+		</interact>
+	</room> 
 
 
-
-
-
+	<room>
+		<name>closet</name>
+		<description>an empty closet</description>
+		<detail>theres a chain dangling to turn the light on</detail>
+		<connections>
+			<north>null</north>
+			<northeast>null</northeast>
+			<east>hallway</east>
+			<southeast>null</southeast>
+			<south>null</south>
+			<southwest>null</southwest>
+			<west>null</west>
+			<northwest>null</northwest>
+			<up>null</up>
+			<down>null</down>
+		</connections>
+		<interact>
+			<item> some item</item>
+			<observe>something</observe>
+		</interact>
+	</room> 
 
 
 

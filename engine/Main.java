@@ -1,9 +1,12 @@
+//Made by Zachary Clark
+
 package engine;
 
 import java.lang.reflect.Array;
 import java.util.Scanner;
 
 import parserXML.*;
+import script.*;
 
 public class Main {
 
@@ -18,55 +21,32 @@ public class Main {
 		String s = new String();
 		Scanner in = new Scanner(System.in);
 		
-		//0=North,1=NorthEast,2=East,3=SouthEast,4=South,5=SouthWest,6=West,7=NorthWest,8=Up,9=Down
-		/*String connections[] = new String[10];
-		
-		String name = "Kitchen";
-		String description = "You have entered the Kitchen";
-		String detail = "You can go northeast to the enterance, or east to the bedroom";
-		connections[1] = "Enterance";
-		connections[2] = "Bedroom";
-		
-		world[0] = new Room(name , description , detail , connections);
-		connections = new String[10];
-		
-		name = "Enterance";
-		description = "You have entered the Enterance";
-		detail = "You can go southeast to the bedroom, or southwest to the kitchen";
-		connections[3] = "Bedroom";
-		connections[5] = "Kitchen";
-		
-		world[1] = new Room(name , description , detail , connections);
-		connections = new String[10];
-		
-		name = "Bedroom";
-		description = "You have entered the Bedroom";
-		detail = "You can go west to the enterance, or northwest to the kitchen";
-		connections[6] = "Enterance";
-		connections[7] = "Kitchen";
-		
-		world[2] = new Room(name , description , detail , connections);
-		connections = new String[10];*/
-		
 		System.out.println("Enter the name of the xml file: ");
 		s = in.nextLine();
 		
+		//0=North,1=NorthEast,2=East,3=SouthEast,4=South,5=SouthWest,6=West,7=NorthWest,8=Up,9=Down
 		world = readxml.create_world(s);
 		
 		s = new String();
 		
+		//Main game loop
 		while(!quit) {
+			
+			//Displays the description of the room when you enter it
 			if(repeat) {
 				System.out.println(world[current_room].description);
 			}
 			
+			//Reset flags
 			repeat = true;
 			complete = false;
 			
+			//Read input from user
 			if(in.hasNextLine()) {
 				s = in.nextLine();
 			}
 				
+			//Jump directly to a room if the user types the name of a room
 			for(int i = 0; i < Array.getLength(world); i++) {
 				if(world[i].name.equalsIgnoreCase(s)) {
 					current_room = i;
@@ -74,6 +54,7 @@ public class Main {
 				}
 			}
 			
+			//Determines what action to take based on the user's input
 			if(!complete) {
 				switch(s.toLowerCase()) {
 				case "observe":
@@ -169,6 +150,65 @@ public class Main {
 					
 					repeat = false;
 					break;
+				
+				case "where":
+				case "wh":
+					for(int i = 0; i < 10; i++) {
+						if(!world[current_room].connections[i].equals("null")) {
+							switch(i) {
+							case 0:
+								System.out.println("North: " + world[current_room].connections[i]);
+								break;
+								
+							case 1:
+								System.out.println("Northeast: " + world[current_room].connections[i]);
+								break;
+								
+							case 2:
+								System.out.println("East: " + world[current_room].connections[i]);
+								break;
+								
+							case 3:
+								System.out.println("Southeast: " + world[current_room].connections[i]);
+								break;
+								
+							case 4:
+								System.out.println("South: " + world[current_room].connections[i]);
+								break;
+								
+							case 5:
+								System.out.println("Southwest: " + world[current_room].connections[i]);
+								break;
+								
+							case 6:
+								System.out.println("West: " + world[current_room].connections[i]);
+								break;
+								
+							case 7:
+								System.out.println("Northwest: " + world[current_room].connections[i]);
+								break;
+								
+							case 8:
+								System.out.println("Up: " + world[current_room].connections[i]);
+								break;
+								
+							case 9:
+								System.out.println("Down: " + world[current_room].connections[i]);
+								break;
+								
+							default:
+								break;
+							}
+						}
+						
+						repeat = false;
+					}
+					break;
+					
+				case "script":
+					nashornScript.runScript();
+					repeat = false;
+					break;
 					
 				default:
 					System.out.println(unknown);
@@ -184,11 +224,12 @@ public class Main {
 
 	}
 	
+	//Returns the position in the world array of the selected room
 	static int get_position(Room[] world , String name , int current_position) {
 		int current_room = current_position;
 		
 		for(int i = 0; i < Array.getLength(world); i++) {
-			if(world[i].name.equals(name)) {
+			if(world[i].name.equalsIgnoreCase(name)) {
 				current_room = i;
 			}
 		}

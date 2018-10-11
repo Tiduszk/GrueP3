@@ -1,11 +1,15 @@
+//Made by Zachary Clark
+
 package engine;
 
 public class Room extends Interactable{
 	public String detail;
-	private String[] connections = new String[10];
+	public String[] connections = new String[10];
 	
+	//No args constructor -- Don't use!
 	public Room() {}
 	
+	//Usable constructor
 	public Room(String name , String description , String detail , String[] connections) {
 		this.name = name;
 		this.description = description;
@@ -13,6 +17,7 @@ public class Room extends Interactable{
 		this.connections = connections;
 	}
 	
+	//Returns a the name of the room connected to the current room in the given direction
 	public String connectedTo(int direction) {
 		String connected = new String();
 		
@@ -43,4 +48,5 @@ public class Room extends Interactable{
 		
 		return(connected);
 	}
+	
 }
