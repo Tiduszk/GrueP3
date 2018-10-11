@@ -6,6 +6,7 @@ import java.lang.reflect.Array;
 import java.util.Scanner;
 
 import parserXML.*;
+import script.*;
 
 public class Main {
 
@@ -147,6 +148,65 @@ public class Main {
 							+ "You can also enter the name of a room to go directly to that room.\n"
 							+ "Enter \"Quit\" to quit and \"Help\" for help.\n");
 					
+					repeat = false;
+					break;
+				
+				case "where":
+				case "wh":
+					for(int i = 0; i < 10; i++) {
+						if(!world[current_room].connections[i].equals("null")) {
+							switch(i) {
+							case 0:
+								System.out.println("North: " + world[current_room].connections[i]);
+								break;
+								
+							case 1:
+								System.out.println("Northeast: " + world[current_room].connections[i]);
+								break;
+								
+							case 2:
+								System.out.println("East: " + world[current_room].connections[i]);
+								break;
+								
+							case 3:
+								System.out.println("Southeast: " + world[current_room].connections[i]);
+								break;
+								
+							case 4:
+								System.out.println("South: " + world[current_room].connections[i]);
+								break;
+								
+							case 5:
+								System.out.println("Southwest: " + world[current_room].connections[i]);
+								break;
+								
+							case 6:
+								System.out.println("West: " + world[current_room].connections[i]);
+								break;
+								
+							case 7:
+								System.out.println("Northwest: " + world[current_room].connections[i]);
+								break;
+								
+							case 8:
+								System.out.println("Up: " + world[current_room].connections[i]);
+								break;
+								
+							case 9:
+								System.out.println("Down: " + world[current_room].connections[i]);
+								break;
+								
+							default:
+								break;
+							}
+						}
+						
+						repeat = false;
+					}
+					break;
+					
+				case "script":
+					nashornScript.runScript();
 					repeat = false;
 					break;
 					

@@ -17,10 +17,12 @@ public class readxml {
 
   public static Room[] create_world(String xmlfile) {
 	  
-	Room[] world = new Room[5];
+	Room[] world = new Room[0];
 
+	// without try-catch block this will not compile
     try {
 
+    // variable names are the tag names to grab from xml input file
 	String name = "";
 	String description = "";
 	String detail = "";
@@ -41,6 +43,11 @@ public class readxml {
 	System.out.print("please enter xml input file: ");
 	String xmlfile = input.nextLine();*/
 	
+	/* using dom parser, takes in xml file and creates a tree structure 
+	* with all tags and data, we then parse the tree structure not 
+	* the actual file itself  
+	*/
+	
 	File fXmlFile = new File(xmlfile);
 	DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 	DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
@@ -48,8 +55,12 @@ public class readxml {
 			
 	doc.getDocumentElement().normalize();
 	
+	//list of the number of room tags
 	NodeList nList = doc.getElementsByTagName("room");
+	
+	world = new Room[nList.getLength()];
 			
+	//loop through list of room tags
 	for (int temp = 0; temp < nList.getLength(); temp++) {	
 		Node nNode = nList.item(temp);
 				
@@ -60,6 +71,11 @@ public class readxml {
 
 			//Element eElement = (Element) nNode;
 
+			
+			/* this is going to each tag name and grabbing the contents for each
+			* iteration of rooms, feeds cardinal directions into an array connection.
+			* creates room object from each iteration.
+			*/
 //			System.out.println("name : " + eElement.getElementsByTagName("name").item(0).getTextContent());
 			name = doc.getElementsByTagName("name").item(temp).getTextContent();
 //			System.out.println("\ndescription: " + eElement.getElementsByTagName("description").item(0).getTextContent());
