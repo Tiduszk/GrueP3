@@ -49,8 +49,4 @@ public class nashornScript{
                 System.out.format(name);
                 return " greeting from java";
         }
-        
-	
-
-	
 }

@@ -3,6 +3,7 @@
 package engine;
 
 import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.Scanner;
 
 import parserXML.*;
@@ -26,6 +27,8 @@ public class Main {
 		
 		//0=North,1=NorthEast,2=East,3=SouthEast,4=South,5=SouthWest,6=West,7=NorthWest,8=Up,9=Down
 		world = readxml.create_world(s);
+		world[0].discovered = true;
+		world[0].locked = false;
 		
 		s = new String();
 		
@@ -48,8 +51,9 @@ public class Main {
 				
 			//Jump directly to a room if the user types the name of a room
 			for(int i = 0; i < Array.getLength(world); i++) {
-				if(world[i].name.equalsIgnoreCase(s)) {
+				if(!world[i].locked && world[i].name.equalsIgnoreCase(s) && (world[i].discovered || Arrays.asList(world[current_room].connections).contains(s.toLowerCase()))) {
 					current_room = i;
+					world[current_room].discovered = true;
 					complete = true;
 				}
 			}
@@ -67,6 +71,7 @@ public class Main {
 				case "n":
 					room_name = world[current_room].connectedTo(0);
 					current_room = get_position(world , room_name , current_room);
+					world[current_room].discovered = true;
 					break;
 					
 				case "northeast":
@@ -75,12 +80,14 @@ public class Main {
 				case "n e":
 					room_name = world[current_room].connectedTo(1);
 					current_room = get_position(world , room_name , current_room);
+					world[current_room].discovered = true;
 					break;
 					
 				case "east":
 				case "e":
 					room_name = world[current_room].connectedTo(2);
 					current_room = get_position(world , room_name , current_room);
+					world[current_room].discovered = true;
 					break;
 					
 				case "southeast":
@@ -89,12 +96,14 @@ public class Main {
 				case "s e":
 					room_name = world[current_room].connectedTo(3);
 					current_room = get_position(world , room_name , current_room);
+					world[current_room].discovered = true;
 					break;
 					
 				case "south":
 				case "s":
 					room_name = world[current_room].connectedTo(4);
 					current_room = get_position(world , room_name , current_room);
+					world[current_room].discovered = true;
 					break;
 					
 				case "southwest":
@@ -103,12 +112,14 @@ public class Main {
 				case "s w":
 					room_name = world[current_room].connectedTo(5);
 					current_room = get_position(world , room_name , current_room);
+					world[current_room].discovered = true;
 					break;
 					
 				case "west":
 				case "w":
 					room_name = world[current_room].connectedTo(6);
 					current_room = get_position(world , room_name , current_room);
+					world[current_room].discovered = true;
 					break;
 					
 				case "northwest":
@@ -117,18 +128,21 @@ public class Main {
 				case "n w":
 					room_name = world[current_room].connectedTo(7);
 					current_room = get_position(world , room_name , current_room);
+					world[current_room].discovered = true;
 					break;
 					
 				case "up":
 				case "u":
 					room_name = world[current_room].connectedTo(8);
 					current_room = get_position(world , room_name , current_room);
+					world[current_room].discovered = true;
 					break;
 					
 				case "down":
 				case "d":
 					room_name = world[current_room].connectedTo(9);
 					current_room = get_position(world , room_name , current_room);
+					world[current_room].discovered = true;
 					break;
 					
 				case "quit":
@@ -206,6 +220,7 @@ public class Main {
 					break;
 					
 				case "script":
+				case "sc":
 					nashornScript.runScript();
 					repeat = false;
 					break;

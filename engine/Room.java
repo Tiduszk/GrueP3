@@ -5,6 +5,8 @@ package engine;
 public class Room extends Interactable{
 	public String detail;
 	public String[] connections = new String[10];
+	public boolean locked = false;
+	public boolean discovered = false;
 	
 	//No args constructor -- Don't use!
 	public Room() {}

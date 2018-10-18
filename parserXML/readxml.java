@@ -113,7 +113,3 @@ public class readxml {
 	return(world);  
   }
 }
-
-		
-
-
