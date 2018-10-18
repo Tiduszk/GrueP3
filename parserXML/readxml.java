@@ -13,7 +13,7 @@ import engine.Room;
 import org.w3c.dom.Node;
 import java.io.File;
 
-public class readxml {
+public class readxml{
 
   public static Room[] create_world(String xmlfile) {
 	  
@@ -36,8 +36,9 @@ public class readxml {
 	String northwest = "";
 	String up = "";
 	String down = "";
-	//String item = "";
-	//String observe = "";
+	String item_name = "";
+	String item_description = "";
+	String item_uses = "";
 
 	/*Scanner input = new Scanner(System.in);
 	System.out.print("please enter xml input file: ");
@@ -93,10 +94,13 @@ public class readxml {
 			northwest = doc.getElementsByTagName("northwest").item(temp).getTextContent();
 			up = doc.getElementsByTagName("up").item(temp).getTextContent();
 			down = doc.getElementsByTagName("down").item(temp).getTextContent();
-//			System.out.println("\ninteract: " +eElement.getElementsByTagName("interact").item(0).getTextContent());
-			/*item = doc.getElementsByTagName("item").item(temp).getTextContent();
-			observe = doc.getElementsByTagName("observe").item(temp).getTextContent();*/
-			String[] connections = {north,northeast,east,southeast,south,southwest,west,northwest, up, down}; 
+
+			item_name = doc.getElementsByTagName("item_name").item(temp).getTextContent();
+			item_description = doc.getElementsByTagName("item_description").item(temp).getTextContent();
+			item_uses = doc.getElementsByTagName("item_uses").item(temp).getTextContent();
+			
+			String[] connections = {north,northeast,east,southeast,south,southwest,west,northwest, up, down};
+			String[] item = {item_name, item_description, item_uses}; 
 			
 			world[temp] = new Room(name , description , detail , connections);
 		}
@@ -110,6 +114,11 @@ public class readxml {
 	e.printStackTrace();
     }
     
-	return(world);  
-  }
+    return world;
+    
 }
+}
+
+		
+
+
