@@ -4,15 +4,21 @@ package engine;
 
 import java.lang.reflect.Array;
 import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.Scanner;
 
+import jdk.nashorn.api.scripting.ScriptObjectMirror;
 import parserXML.*;
 import script.*;
 
 public class Main {
 
+	public static ArrayList<Room> newRoom = new ArrayList<Room>();
+	public static ArrayList<person> newPerson = new ArrayList<person>();
+
+
 	public static void main(String[] args) {
-		Room[] world;
+		ArrayList<Room> world;
 		String unknown = "Your command cannot be understood";
 		boolean quit = false;
 		int current_room = 0;
@@ -27,8 +33,8 @@ public class Main {
 		
 		//0=North,1=NorthEast,2=East,3=SouthEast,4=South,5=SouthWest,6=West,7=NorthWest,8=Up,9=Down
 		world = readxml.create_world(s);
-		world[0].discovered = true;
-		world[0].locked = false;
+		world.get(0).discovered = true;
+		world.get(0).locked = false;
 		
 		s = new String();
 		
@@ -37,7 +43,7 @@ public class Main {
 			
 			//Displays the description of the room when you enter it
 			if(repeat) {
-				System.out.println(world[current_room].description);
+				System.out.println(world.get(current_room).description);
 			}
 			
 			//Reset flags
@@ -50,10 +56,10 @@ public class Main {
 			}
 				
 			//Jump directly to a room if the user types the name of a room
-			for(int i = 0; i < Array.getLength(world); i++) {
-				if(!world[i].locked && world[i].name.equalsIgnoreCase(s) && (world[i].discovered || Arrays.asList(world[current_room].connections).contains(s.toLowerCase()))) {
+			for(int i = 0; i < world.size()-1; i++) {
+				if(!world.get(i).locked && world.get(i).name.equalsIgnoreCase(s) && (world.get(i).discovered || Arrays.asList(world.get(current_room).connections).contains(s.toLowerCase()))) {
 					current_room = i;
-					world[current_room].discovered = true;
+					world.get(current_room).discovered = true;
 					complete = true;
 				}
 			}
@@ -63,86 +69,86 @@ public class Main {
 				switch(s.toLowerCase()) {
 				case "observe":
 				case "o":
-					System.out.println(world[current_room].detail);
+					System.out.println(world.get(current_room).detail);
 					repeat = false;
 					break;
 					
 				case "north":
 				case "n":
-					room_name = world[current_room].connectedTo(0);
+					room_name = world.get(current_room).connectedTo(0);
 					current_room = get_position(world , room_name , current_room);
-					world[current_room].discovered = true;
+					world.get(current_room).discovered = true;
 					break;
 					
 				case "northeast":
 				case "north east":
 				case "ne":
 				case "n e":
-					room_name = world[current_room].connectedTo(1);
+					room_name = world.get(current_room).connectedTo(1);
 					current_room = get_position(world , room_name , current_room);
-					world[current_room].discovered = true;
+					world.get(current_room).discovered = true;
 					break;
 					
 				case "east":
 				case "e":
-					room_name = world[current_room].connectedTo(2);
+					room_name = world.get(current_room).connectedTo(2);
 					current_room = get_position(world , room_name , current_room);
-					world[current_room].discovered = true;
+					world.get(current_room).discovered = true;
 					break;
 					
 				case "southeast":
 				case "south east":
 				case "se":
 				case "s e":
-					room_name = world[current_room].connectedTo(3);
+					room_name = world.get(current_room).connectedTo(3);
 					current_room = get_position(world , room_name , current_room);
-					world[current_room].discovered = true;
+					world.get(current_room).discovered = true;
 					break;
 					
 				case "south":
 				case "s":
-					room_name = world[current_room].connectedTo(4);
+					room_name = world.get(current_room).connectedTo(4);
 					current_room = get_position(world , room_name , current_room);
-					world[current_room].discovered = true;
+					world.get(current_room).discovered = true;
 					break;
 					
 				case "southwest":
 				case "south west":
 				case "sw":
 				case "s w":
-					room_name = world[current_room].connectedTo(5);
+					room_name = world.get(current_room).connectedTo(5);
 					current_room = get_position(world , room_name , current_room);
-					world[current_room].discovered = true;
+					world.get(current_room).discovered = true;
 					break;
 					
 				case "west":
 				case "w":
-					room_name = world[current_room].connectedTo(6);
+					room_name = world.get(current_room).connectedTo(6);
 					current_room = get_position(world , room_name , current_room);
-					world[current_room].discovered = true;
+					world.get(current_room).discovered = true;
 					break;
 					
 				case "northwest":
 				case "north west":
 				case "nw":
 				case "n w":
-					room_name = world[current_room].connectedTo(7);
+					room_name = world.get(current_room).connectedTo(7);
 					current_room = get_position(world , room_name , current_room);
-					world[current_room].discovered = true;
+					world.get(current_room).discovered = true;
 					break;
 					
 				case "up":
 				case "u":
-					room_name = world[current_room].connectedTo(8);
+					room_name = world.get(current_room).connectedTo(8);
 					current_room = get_position(world , room_name , current_room);
-					world[current_room].discovered = true;
+					world.get(current_room).discovered = true;
 					break;
 					
 				case "down":
 				case "d":
-					room_name = world[current_room].connectedTo(9);
+					room_name = world.get(current_room).connectedTo(9);
 					current_room = get_position(world , room_name , current_room);
-					world[current_room].discovered = true;
+					world.get(current_room).discovered = true;
 					break;
 					
 				case "quit":
@@ -168,46 +174,46 @@ public class Main {
 				case "where":
 				case "wh":
 					for(int i = 0; i < 10; i++) {
-						if(!world[current_room].connections[i].equals("null")) {
+						if(!world.get(current_room).connections[i].equals("null")) {
 							switch(i) {
 							case 0:
-								System.out.println("North: " + world[current_room].connections[i]);
+								System.out.println("North: " + world.get(current_room).connections[i]);
 								break;
 								
 							case 1:
-								System.out.println("Northeast: " + world[current_room].connections[i]);
+								System.out.println("Northeast: " + world.get(current_room).connections[i]);
 								break;
 								
 							case 2:
-								System.out.println("East: " + world[current_room].connections[i]);
+								System.out.println("East: " + world.get(current_room).connections[i]);
 								break;
 								
 							case 3:
-								System.out.println("Southeast: " + world[current_room].connections[i]);
+								System.out.println("Southeast: " + world.get(current_room).connections[i]);
 								break;
 								
 							case 4:
-								System.out.println("South: " + world[current_room].connections[i]);
+								System.out.println("South: " + world.get(current_room).connections[i]);
 								break;
 								
 							case 5:
-								System.out.println("Southwest: " + world[current_room].connections[i]);
+								System.out.println("Southwest: " + world.get(current_room).connections[i]);
 								break;
 								
 							case 6:
-								System.out.println("West: " + world[current_room].connections[i]);
+								System.out.println("West: " + world.get(current_room).connections[i]);
 								break;
 								
 							case 7:
-								System.out.println("Northwest: " + world[current_room].connections[i]);
+								System.out.println("Northwest: " + world.get(current_room).connections[i]);
 								break;
 								
 							case 8:
-								System.out.println("Up: " + world[current_room].connections[i]);
+								System.out.println("Up: " + world.get(current_room).connections[i]);
 								break;
 								
 							case 9:
-								System.out.println("Down: " + world[current_room].connections[i]);
+								System.out.println("Down: " + world.get(current_room).connections[i]);
 								break;
 								
 							default:
@@ -219,9 +225,27 @@ public class Main {
 					}
 					break;
 					
-				case "script":
-				case "sc":
-					nashornScript.runScript();
+				case "roomscript":
+				case "rs":
+					roomScript.runScript();
+					for(int i=0;i < newRoom.size(); i++)
+					{
+						world.add(newRoom.get(i));
+					}	
+					for(int i = 0; i < world.size(); i++)
+					{
+						System.out.println(world.get(i).getName());
+					}
+					repeat = false;
+					break;
+					
+				case "personscript":
+				case "ps":
+					personScript.runScript();
+					for(int i = 0; i < newPerson.size(); i++)
+					{
+						System.out.println(newPerson.get(i).getName());
+					}
 					repeat = false;
 					break;
 					
@@ -240,11 +264,11 @@ public class Main {
 	}
 	
 	//Returns the position in the world array of the selected room
-	static int get_position(Room[] world , String name , int current_position) {
+	static int get_position(ArrayList<Room> world , String name , int current_position) {
 		int current_room = current_position;
 		
-		for(int i = 0; i < Array.getLength(world); i++) {
-			if(world[i].name.equalsIgnoreCase(name)) {
+		for(int i = 0; i < world.size()-1; i++) {
+			if(world.get(i).name.equalsIgnoreCase(name)) {
 				current_room = i;
 			}
 		}
