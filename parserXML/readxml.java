@@ -12,12 +12,13 @@ import engine.Room;
 
 import org.w3c.dom.Node;
 import java.io.File;
+import java.util.ArrayList;
 
 public class readxml{
 
-  public static Room[] create_world(String xmlfile) {
+  public static ArrayList<Room> create_world(String xmlfile) {
 	  
-	Room[] world = new Room[0];
+	ArrayList<Room> world = new ArrayList<Room>();
 
 	// without try-catch block this will not compile
     try {
@@ -59,7 +60,6 @@ public class readxml{
 	//list of the number of room tags
 	NodeList nList = doc.getElementsByTagName("room");
 	
-	world = new Room[nList.getLength()];
 			
 	//loop through list of room tags
 	for (int temp = 0; temp < nList.getLength(); temp++) {	
@@ -100,14 +100,12 @@ public class readxml{
 			item_uses = doc.getElementsByTagName("item_uses").item(temp).getTextContent();
 			
 			String[] connections = {north,northeast,east,southeast,south,southwest,west,northwest, up, down};
-			String[] item = {item_name, item_description, item_uses}; 
+			String[] items = {item_name, item_description, item_uses}; 
 			
-			world[temp] = new Room(name , description , detail , connections);
+			world.add(new Room(name , description , detail , connections, items));
 		}
 		
 	}
-	
-	//input.close();
 
 
     } catch (Exception e) {
