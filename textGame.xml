@@ -19,10 +19,11 @@
 			<up>null</up>
 			<down>null</down>
 		</connections>
-		<interact>
-			<item>Wooden Rod</item>
-			<observe>Painting</observe>
-		</interact>
+		<item>
+			<item_name>key</item_name>
+			<item_description>Painting</item_description>
+			<item_uses>1</item_uses>
+		</item>
 	</room>
 
 
@@ -43,10 +44,11 @@
 			<up>null</up>
 			<down>null</down>
 		</connections>
-		<interact>
-			<item>note</item>
-			<observe>oven</observe>
-		</interact>
+		<item>
+			<item_name>note</item_name>
+			<item_description>oven</item_description>
+			<item_uses>1</item_uses>
+		</item>
 	</room>
 
 
@@ -66,10 +68,11 @@
 			<up>null</up>
 			<down>null</down>
 		</connections>
-		<interact>
-			<item>sink faucet</item>
-			<observe>medicine cabinet</observe>
-		</interact>
+		<item>
+			<item_name>sink faucet</item_name>
+			<item_description>medicine cabinet</item_description>
+			<item_uses>1</item_uses>
+		</item>
 	</room>
 
 	<room>
@@ -88,10 +91,11 @@
 			<up>null</up>
 			<down>null</down>
 		</connections>
-		<interact>
-			<item>some item</item>
-			<observe>observe something</observe>
-		</interact>
+		<item>
+			<item_name>some item</item_name>
+			<item_description>observe something</item_description>
+			<item_uses>1</item_uses>
+		</item>
 	</room>
 
 	<room>
@@ -110,10 +114,11 @@
 			<up>null</up>
 			<down>null</down>
 		</connections>
-		<interact>
-			<item> some item</item>
-			<observe>something</observe>
-		</interact>
+		<item>
+			<item_name> some item</item_name>
+			<item_description>something</item_description>
+			<item_uses>1</item_uses>
+		</item>
 	</room> 
 
 	<room>
@@ -132,10 +137,11 @@
 			<up>bedroom</up>
 			<down>null</down>
 		</connections>
-		<interact>
-			<item> some item</item>
-			<observe>something</observe>
-		</interact>
+		<item>
+			<item_name> some item</item_name>
+			<item_description>something</item_description>
+			<item_uses>1</item_uses>
+		</item>
 	</room> 
 
 	<room>
@@ -154,10 +160,11 @@
 			<up>null</up>
 			<down>hallway</down>
 		</connections>
-		<interact>
-			<item> some item</item>
-			<observe>something</observe>
-		</interact>
+		<item>
+			<item_name> some item</item_name>
+			<item_description>something</item_description>
+			<item_uses>1</item_uses>
+		</item>
 	</room> 
 
 
@@ -177,10 +184,11 @@
 			<up>null</up>
 			<down>null</down>
 		</connections>
-		<interact>
-			<item> some item</item>
-			<observe>something</observe>
-		</interact>
+		<item>
+			<item_name> some item</item_name>
+			<item_description>something</item_description>
+			<item_uses>1</item_uses>
+		</item>
 	</room> 
 
 
