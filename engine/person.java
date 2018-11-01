@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class person {
 	
-	String name = "duke nukem";
+	String name = "chris redfield";
 	int health = 100;
 	int score = 0;
 	ArrayList<Item> inventory = new ArrayList<Item>();
@@ -34,4 +34,13 @@ public class person {
 		return inventory;
 	}
 
+	void setHealth(int newHealth) {
+		health += newHealth;
+	}
+	
+	void setScore(int newScore) {
+		score += newScore;
+	}
+
 }
+

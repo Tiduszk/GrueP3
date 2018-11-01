@@ -27,6 +27,7 @@ public class Main {
 		String room_name = new String();
 		String s = new String();
 		Scanner in = new Scanner(System.in);
+		person person = new person();
 		
 		System.out.println("Enter the name of the xml file: ");
 		s = in.nextLine();
@@ -238,9 +239,10 @@ public class Main {
 					}
 					repeat = false;
 					break;
-					
+				
 				case "personscript":
 				case "ps":
+					System.out.println("starting character is: " + person.getName());
 					personScript.runScript();
 					for(int i = 0; i < newPerson.size(); i++)
 					{
@@ -267,7 +269,7 @@ public class Main {
 	static int get_position(ArrayList<Room> world , String name , int current_position) {
 		int current_room = current_position;
 		
-		for(int i = 0; i < world.size()-1; i++) {
+		for(int i = 0; i < world.size(); i++) {
 			if(world.get(i).name.equalsIgnoreCase(name)) {
 				current_room = i;
 			}
