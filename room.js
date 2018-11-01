@@ -44,6 +44,8 @@ function room(name,description,detail,north,northeast,
 	myConnection.add(this.southwest);
 	myConnection.add(this.west);
 	myConnection.add(this.northwest);
+	myConnection.add(this.up);
+	myConnection.add(this.down);
 	return myConnection;
 	}
 	
@@ -59,10 +61,10 @@ function room(name,description,detail,north,northeast,
 	
 
 
-var room1 = new room("newroomBitches", " a damn fine room", "damn this is nice", "kitchen", "entrance", "null", "null", "null", "null", "null", "null", "null", "null", "key", "a green key", "1");
+var room1 = new room("secret room", "a room filled with weapons and gold", "damn this is what i'm talking about", "null", "null", "null", "null", "null", "null", "bedroom", "null", "null", "null", "key", "a green key", "1");
 myjavaclass.makeRoom(room1);
 
-var room2 = new room("newroomBitches2", " a damn fine room2", "damn this is nice2", "courtyard", "null", "null", "bathroom", "null", "null", "null", "null", "null", "null", "key", "a red key", "2");
+var room2 = new room("library", "a room with book cases", "this is insane", "null", "null", "bedroom", "null", "null", "null", "null", "null",
+"null", "null", "key", "a red key", "1");
 myjavaclass.makeRoom(room2);
-
 

@@ -18,5 +18,10 @@ function person(name, health, score){
 var person1 = new person("venom", "100", "0");
 myjavaclass.person(person1);
 
-var person2 = new person("spiderman", "65", "1000");
+var person2 = new person("Macho Man Randy Savage", "65", "1000");
 myjavaclass.person(person2);
+
+var person3 = new person("Dr.Rumack(dont call me shirley)", "100", "10000");
+myjavaclass.person(person3);
+
+ 

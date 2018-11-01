@@ -151,11 +151,11 @@
 		<connections>
 			<north>null</north>
 			<northeast>null</northeast>
-			<east>null</east>
+			<east>secret room</east>
 			<southeast>null</southeast>
 			<south>null</south>
 			<southwest>null</southwest>
-			<west>null</west>
+			<west>library</west>
 			<northwest>null</northwest>
 			<up>null</up>
 			<down>hallway</down>
