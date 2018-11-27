@@ -19,10 +19,13 @@
 			<up>null</up>
 			<down>null</down>
 		</connections>
-		<interact>
-			<item>Wooden Rod</item>
-			<observe>Painting</observe>
-		</interact>
+		<item>
+			<item_name>key</item_name>
+			<item_description>Unlocks the Closet</item_description>
+			<item_type>Key</item_type>
+			<unlocks>closet</unlocks>
+			<item_uses>1</item_uses>
+		</item>
 	</room>
 
 
@@ -43,10 +46,13 @@
 			<up>null</up>
 			<down>null</down>
 		</connections>
-		<interact>
-			<item>note</item>
-			<observe>oven</observe>
-		</interact>
+		<item>
+			<item_name>key</item_name>
+			<item_description>Unlocks the Closet</item_description>
+			<item_type>Key</item_type>
+			<unlocks>closet</unlocks>
+			<item_uses>1</item_uses>
+		</item>
 	</room>
 
 
@@ -66,10 +72,13 @@
 			<up>null</up>
 			<down>null</down>
 		</connections>
-		<interact>
-			<item>sink faucet</item>
-			<observe>medicine cabinet</observe>
-		</interact>
+		<item>
+			<item_name>key</item_name>
+			<item_description>Unlocks the Closet</item_description>
+			<item_type>Key</item_type>
+			<unlocks>closet</unlocks>
+			<item_uses>1</item_uses>
+		</item>
 	</room>
 
 	<room>
@@ -88,10 +97,13 @@
 			<up>null</up>
 			<down>null</down>
 		</connections>
-		<interact>
-			<item>some item</item>
-			<observe>observe something</observe>
-		</interact>
+		<item>
+			<item_name>key</item_name>
+			<item_description>Unlocks the Closet</item_description>
+			<item_type>Key</item_type>
+			<unlocks>closet</unlocks>
+			<item_uses>1</item_uses>
+		</item>
 	</room>
 
 	<room>
@@ -110,10 +122,13 @@
 			<up>null</up>
 			<down>null</down>
 		</connections>
-		<interact>
-			<item> some item</item>
-			<observe>something</observe>
-		</interact>
+		<item>
+			<item_name>key</item_name>
+			<item_description>Unlocks the Closet</item_description>
+			<item_type>Key</item_type>
+			<unlocks>closet</unlocks>
+			<item_uses>1</item_uses>
+		</item>
 	</room> 
 
 	<room>
@@ -132,10 +147,13 @@
 			<up>bedroom</up>
 			<down>null</down>
 		</connections>
-		<interact>
-			<item> some item</item>
-			<observe>something</observe>
-		</interact>
+		<item>
+			<item_name>key</item_name>
+			<item_description>Unlocks the Closet</item_description>
+			<item_type>Key</item_type>
+			<unlocks>closet</unlocks>
+			<item_uses>1</item_uses>
+		</item>
 	</room> 
 
 	<room>
@@ -154,10 +172,13 @@
 			<up>null</up>
 			<down>hallway</down>
 		</connections>
-		<interact>
-			<item> some item</item>
-			<observe>something</observe>
-		</interact>
+		<item>
+			<item_name>key</item_name>
+			<item_description>Unlocks the Closet</item_description>
+			<item_type>Key</item_type>
+			<unlocks>closet</unlocks>
+			<item_uses>1</item_uses>
+		</item>
 	</room> 
 
 
@@ -177,10 +198,13 @@
 			<up>null</up>
 			<down>null</down>
 		</connections>
-		<interact>
-			<item> some item</item>
-			<observe>something</observe>
-		</interact>
+		<item>
+			<item_name>key</item_name>
+			<item_description>Unlocks the Closet</item_description>
+			<item_type>Key</item_type>
+			<unlocks>closet</unlocks>
+			<item_uses>1</item_uses>
+		</item>
 	</room> 
 
 

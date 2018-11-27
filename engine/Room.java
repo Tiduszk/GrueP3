@@ -2,19 +2,26 @@
 
 package engine;
 
+import java.util.ArrayList;
+
 public class Room extends Interactable{
 	public String detail;
 	public String[] connections = new String[10];
+	public ArrayList<Item> items;
+	public boolean locked = false;
+	public boolean discovered = false;
 	
 	//No args constructor -- Don't use!
 	public Room() {}
 	
 	//Usable constructor
-	public Room(String name , String description , String detail , String[] connections) {
+	public Room(String name , String description , String detail , String[] connections , boolean locked , ArrayList<Item> items) {
 		this.name = name;
 		this.description = description;
 		this.detail = detail;
 		this.connections = connections;
+		this.locked = locked;
+		this.items = items;
 	}
 	
 	//Returns a the name of the room connected to the current room in the given direction
@@ -47,6 +54,10 @@ public class Room extends Interactable{
 		}
 		
 		return(connected);
+	}
+	
+	String getName() {
+		return name;
 	}
 	
 }

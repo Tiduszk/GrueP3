@@ -8,16 +8,17 @@ import javax.xml.parsers.DocumentBuilder;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 
-import engine.Room;
+import engine.*;
 
 import org.w3c.dom.Node;
 import java.io.File;
+import java.util.ArrayList;
 
-public class readxml {
+public class readxml{
 
-  public static Room[] create_world(String xmlfile) {
+  public static ArrayList<Room> create_world(String xmlfile) {
 	  
-	Room[] world = new Room[0];
+	ArrayList<Room> world = new ArrayList<Room>();
 
 	// without try-catch block this will not compile
     try {
@@ -36,8 +37,11 @@ public class readxml {
 	String northwest = "";
 	String up = "";
 	String down = "";
-	//String item = "";
-	//String observe = "";
+	String item_name = "";
+	String item_description = "";
+	String item_type = "";
+	ArrayList<String> key_unlocks = new ArrayList<String>();
+	String item_uses = "";
 
 	/*Scanner input = new Scanner(System.in);
 	System.out.print("please enter xml input file: ");
@@ -58,11 +62,11 @@ public class readxml {
 	//list of the number of room tags
 	NodeList nList = doc.getElementsByTagName("room");
 	
-	world = new Room[nList.getLength()];
 			
 	//loop through list of room tags
 	for (int temp = 0; temp < nList.getLength(); temp++) {	
 		Node nNode = nList.item(temp);
+		ArrayList<Item> contents = new ArrayList<Item>();
 				
 //		System.out.println("\nCurrent Element :" + nNode.getNodeName());
 				
@@ -93,25 +97,36 @@ public class readxml {
 			northwest = doc.getElementsByTagName("northwest").item(temp).getTextContent();
 			up = doc.getElementsByTagName("up").item(temp).getTextContent();
 			down = doc.getElementsByTagName("down").item(temp).getTextContent();
-//			System.out.println("\ninteract: " +eElement.getElementsByTagName("interact").item(0).getTextContent());
-			/*item = doc.getElementsByTagName("item").item(temp).getTextContent();
-			observe = doc.getElementsByTagName("observe").item(temp).getTextContent();*/
-			String[] connections = {north,northeast,east,southeast,south,southwest,west,northwest, up, down}; 
+
+			item_name = doc.getElementsByTagName("item_name").item(temp).getTextContent();
+			item_description = doc.getElementsByTagName("item_description").item(temp).getTextContent();
+			item_type = doc.getElementsByTagName("item_type").item(temp).getTextContent();
+			key_unlocks.add(doc.getElementsByTagName("unlocks").item(temp).getTextContent());
+			item_uses = doc.getElementsByTagName("item_uses").item(temp).getTextContent();
 			
-			world[temp] = new Room(name , description , detail , connections);
+			String[] connections = {north,northeast,east,southeast,south,southwest,west,northwest, up, down};
+			
+			if(item_type.equalsIgnoreCase("key")) {
+				contents.add(new Key(item_name , item_description , Integer.parseInt(item_uses) , key_unlocks));
+			}
+			
+			else {
+				contents.add(new Item(item_name , item_description , Integer.parseInt(item_uses)));
+			}
+			
+			world.add(new Room(name , description , detail , connections , false , contents));
 		}
 		
 	}
-	
-	//input.close();
 
 
     } catch (Exception e) {
 	e.printStackTrace();
     }
     
-	return(world);  
-  }
+    return world;
+    
+}
 }
 
 		
