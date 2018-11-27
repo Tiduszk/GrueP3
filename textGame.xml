@@ -21,7 +21,9 @@
 		</connections>
 		<item>
 			<item_name>key</item_name>
-			<item_description>Painting</item_description>
+			<item_description>Unlocks the Closet</item_description>
+			<item_type>Key</item_type>
+			<unlocks>closet</unlocks>
 			<item_uses>1</item_uses>
 		</item>
 	</room>
@@ -45,8 +47,10 @@
 			<down>null</down>
 		</connections>
 		<item>
-			<item_name>note</item_name>
-			<item_description>oven</item_description>
+			<item_name>key</item_name>
+			<item_description>Unlocks the Closet</item_description>
+			<item_type>Key</item_type>
+			<unlocks>closet</unlocks>
 			<item_uses>1</item_uses>
 		</item>
 	</room>
@@ -69,8 +73,10 @@
 			<down>null</down>
 		</connections>
 		<item>
-			<item_name>sink faucet</item_name>
-			<item_description>medicine cabinet</item_description>
+			<item_name>key</item_name>
+			<item_description>Unlocks the Closet</item_description>
+			<item_type>Key</item_type>
+			<unlocks>closet</unlocks>
 			<item_uses>1</item_uses>
 		</item>
 	</room>
@@ -92,8 +98,10 @@
 			<down>null</down>
 		</connections>
 		<item>
-			<item_name>some item</item_name>
-			<item_description>observe something</item_description>
+			<item_name>key</item_name>
+			<item_description>Unlocks the Closet</item_description>
+			<item_type>Key</item_type>
+			<unlocks>closet</unlocks>
 			<item_uses>1</item_uses>
 		</item>
 	</room>
@@ -115,8 +123,10 @@
 			<down>null</down>
 		</connections>
 		<item>
-			<item_name> some item</item_name>
-			<item_description>something</item_description>
+			<item_name>key</item_name>
+			<item_description>Unlocks the Closet</item_description>
+			<item_type>Key</item_type>
+			<unlocks>closet</unlocks>
 			<item_uses>1</item_uses>
 		</item>
 	</room> 
@@ -138,8 +148,10 @@
 			<down>null</down>
 		</connections>
 		<item>
-			<item_name> some item</item_name>
-			<item_description>something</item_description>
+			<item_name>key</item_name>
+			<item_description>Unlocks the Closet</item_description>
+			<item_type>Key</item_type>
+			<unlocks>closet</unlocks>
 			<item_uses>1</item_uses>
 		</item>
 	</room> 
@@ -151,18 +163,20 @@
 		<connections>
 			<north>null</north>
 			<northeast>null</northeast>
-			<east>secret room</east>
+			<east>null</east>
 			<southeast>null</southeast>
 			<south>null</south>
 			<southwest>null</southwest>
-			<west>library</west>
+			<west>null</west>
 			<northwest>null</northwest>
 			<up>null</up>
 			<down>hallway</down>
 		</connections>
 		<item>
-			<item_name> some item</item_name>
-			<item_description>something</item_description>
+			<item_name>key</item_name>
+			<item_description>Unlocks the Closet</item_description>
+			<item_type>Key</item_type>
+			<unlocks>closet</unlocks>
 			<item_uses>1</item_uses>
 		</item>
 	</room> 
@@ -185,8 +199,10 @@
 			<down>null</down>
 		</connections>
 		<item>
-			<item_name> some item</item_name>
-			<item_description>something</item_description>
+			<item_name>key</item_name>
+			<item_description>Unlocks the Closet</item_description>
+			<item_type>Key</item_type>
+			<unlocks>closet</unlocks>
 			<item_uses>1</item_uses>
 		</item>
 	</room> 

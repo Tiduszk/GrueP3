@@ -8,7 +8,7 @@ import javax.xml.parsers.DocumentBuilder;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 
-import engine.Room;
+import engine.*;
 
 import org.w3c.dom.Node;
 import java.io.File;
@@ -39,6 +39,8 @@ public class readxml{
 	String down = "";
 	String item_name = "";
 	String item_description = "";
+	String item_type = "";
+	ArrayList<String> key_unlocks = new ArrayList<String>();
 	String item_uses = "";
 
 	/*Scanner input = new Scanner(System.in);
@@ -64,6 +66,7 @@ public class readxml{
 	//loop through list of room tags
 	for (int temp = 0; temp < nList.getLength(); temp++) {	
 		Node nNode = nList.item(temp);
+		ArrayList<Item> contents = new ArrayList<Item>();
 				
 //		System.out.println("\nCurrent Element :" + nNode.getNodeName());
 				
@@ -97,12 +100,21 @@ public class readxml{
 
 			item_name = doc.getElementsByTagName("item_name").item(temp).getTextContent();
 			item_description = doc.getElementsByTagName("item_description").item(temp).getTextContent();
+			item_type = doc.getElementsByTagName("item_type").item(temp).getTextContent();
+			key_unlocks.add(doc.getElementsByTagName("unlocks").item(temp).getTextContent());
 			item_uses = doc.getElementsByTagName("item_uses").item(temp).getTextContent();
 			
 			String[] connections = {north,northeast,east,southeast,south,southwest,west,northwest, up, down};
-			String[] items = {item_name, item_description, item_uses}; 
 			
-			world.add(new Room(name , description , detail , connections, items));
+			if(item_type.equalsIgnoreCase("key")) {
+				contents.add(new Key(item_name , item_description , Integer.parseInt(item_uses) , key_unlocks));
+			}
+			
+			else {
+				contents.add(new Item(item_name , item_description , Integer.parseInt(item_uses)));
+			}
+			
+			world.add(new Room(name , description , detail , connections , false , contents));
 		}
 		
 	}

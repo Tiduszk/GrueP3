@@ -1,11 +1,12 @@
 package script;
 
 import java.io.*;
+import java.util.ArrayList;
 
 import javax.script.*;
 
 
-import engine.Room;
+import engine.*;
 import jdk.nashorn.api.scripting.ScriptObjectMirror;
 
 
@@ -48,16 +49,38 @@ public class roomScript{
 		room_connections = room_connections.replace("]", "");
 		String [] connections = room_connections.split(",");
 		
+		//Prototype locked code
+		String room_locked = room.callMember("getLocked").toString();
+		room_locked = room_locked.replace("[", "");
+		room_locked = room_locked.replace("]", "");
+		boolean locked = toBool(room_locked);
 		
 		String room_items = room.callMember("getItems").toString();
 		room_items = room_items.replace("[", "");
 		room_items = room_items.replace("]", "");
-		String [] items = room_items.split(",");
-		
-		Room addRoom = new Room(name , description , detail , connections, items);
+		String [] items_prototype = room_items.split(",");
+		//Prototype inventory code
+		ArrayList<Item> items = new ArrayList<Item>();
+		Item item_1 = new Item(items_prototype[0] , items_prototype[1] , Integer.parseInt(items_prototype[2]));
+		items.add(item_1);
+				
+		Room addRoom = new Room(name , description , detail , connections, locked, items);
 		engine.Main.newRoom.add(addRoom);
 	
 		
 	}
 	
+	private static boolean toBool(String room_locked) {
+		boolean locked;
+		int temp = Integer.parseInt(room_locked);
+		if(temp == 0) {
+			locked = false;
+		}
+		else {
+			locked = true;
+		}
+		return(locked);
+	}
+	
 }
+

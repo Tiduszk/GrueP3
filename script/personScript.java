@@ -5,8 +5,7 @@ import java.util.ArrayList;
 
 import javax.script.*;
 
-import engine.Item;
-import engine.person;
+import engine.*;
 import jdk.nashorn.api.scripting.ScriptObjectMirror;
 
 public class personScript {
@@ -31,8 +30,9 @@ public class personScript {
 	   
 //function that gets person object from javascript and converts to person java object
 	public static void person(ScriptObjectMirror person) {
-		String name = "",health1 = "",score1 = "";
+		String name = "", description = "";
 		int health,score;
+		ArrayList<Item> inventory = new ArrayList<Item>();
 		
 		String person_essential = person.callMember("getPerson").toString();
 		person_essential = person_essential.replace("[", "");
@@ -40,18 +40,16 @@ public class personScript {
 		person_essential = person_essential.replace(" ", "");
 		String [] myPerson = person_essential.split(",");
 		name = myPerson[0];
-		health1 = myPerson[1];
-		health = Integer.valueOf(health1); 
-		score1 = myPerson[2];
-		score = Integer.valueOf(score1);
-	
+		health = Integer.valueOf(myPerson[1]);
+		score = Integer.valueOf(myPerson[2]);
 		
 //		System.out.println(name);
 //		System.out.println(health);
 //		System.out.println(score);
 		
-		person person1 = new person(name,health,score);
+		engine.Character person1 = new engine.Character(name,description,health,inventory);
 		engine.Main.newPerson.add(person1);
+		person1.score += score;
 		
 	
 		

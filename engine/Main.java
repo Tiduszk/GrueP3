@@ -2,23 +2,22 @@
 
 package engine;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import jdk.nashorn.api.scripting.ScriptObjectMirror;
 import parserXML.*;
 import script.*;
 
 public class Main {
 
 	public static ArrayList<Room> newRoom = new ArrayList<Room>();
-	public static ArrayList<person> newPerson = new ArrayList<person>();
+	public static ArrayList<Character> newPerson = new ArrayList<Character>();
 
 
 	public static void main(String[] args) {
 		ArrayList<Room> world;
+		Character player = new Character("Player" , "The Player" , 100 , new ArrayList<Item>());
 		String unknown = "Your command cannot be understood";
 		boolean quit = false;
 		int current_room = 0;
@@ -27,7 +26,6 @@ public class Main {
 		String room_name = new String();
 		String s = new String();
 		Scanner in = new Scanner(System.in);
-		person person = new person();
 		
 		System.out.println("Enter the name of the xml file: ");
 		s = in.nextLine();
@@ -71,6 +69,11 @@ public class Main {
 				case "observe":
 				case "o":
 					System.out.println(world.get(current_room).detail);
+					if(!world.get(current_room).items.isEmpty()) {
+						for(int i = 0; i < world.get(current_room).items.size(); i++) {
+							System.out.println("You see items in the room: " + world.get(current_room).items.get(i).name);
+						}
+					}
 					repeat = false;
 					break;
 					
@@ -150,6 +153,22 @@ public class Main {
 					room_name = world.get(current_room).connectedTo(9);
 					current_room = get_position(world , room_name , current_room);
 					world.get(current_room).discovered = true;
+					break;
+					
+				case "inventory":
+				case "i":
+					if(player.inventory.isEmpty()) {
+						System.out.println("There is nothing in your inventory");
+					}
+					
+					else {
+						for(int i = 0; i < player.inventory.size(); i++) {
+							System.out.println(player.inventory.get(i).name);
+						}
+					}
+					
+					repeat = false;
+					
 					break;
 					
 				case "quit":
@@ -235,30 +254,50 @@ public class Main {
 					}	
 					for(int i = 0; i < world.size(); i++)
 					{
-						System.out.println(world.get(i).getName());
+						System.out.println(world.get(i).name);
 					}
 					repeat = false;
 					break;
-				
+					
 				case "personscript":
 				case "ps":
-					System.out.println("starting character is: " + person.getName());
 					personScript.runScript();
 					for(int i = 0; i < newPerson.size(); i++)
 					{
-						System.out.println(newPerson.get(i).getName());
+						System.out.println(newPerson.get(i).name);
 					}
 					repeat = false;
 					break;
 					
 				default:
-					System.out.println(unknown);
+					String[] sArray = new String[2];
+					
+					if(s.toLowerCase().contains("get")) {
+						sArray = s.split(" ");
+						for(int i = 0; i < world.get(current_room).items.size(); i++) {
+							if(sArray[1].equalsIgnoreCase(world.get(current_room).items.get(i).name)) {
+								player.inventory.add(world.get(current_room).items.get(i));
+								world.get(current_room).items.remove(i);
+								
+								System.out.println("Okay");
+							}
+							
+							else {
+								System.out.println("I can't find that item.");
+							}
+						}
+						
+					}
+					
+					else {
+						System.out.println(unknown);
+						repeat = false;
+						break;
+					}
+					
 					repeat = false;
-					break;
-				}
-				
+				}	
 			}
-			
 		}
 		
 		in.close();
@@ -269,7 +308,7 @@ public class Main {
 	static int get_position(ArrayList<Room> world , String name , int current_position) {
 		int current_room = current_position;
 		
-		for(int i = 0; i < world.size(); i++) {
+		for(int i = 0; i < world.size()-1; i++) {
 			if(world.get(i).name.equalsIgnoreCase(name)) {
 				current_room = i;
 			}
