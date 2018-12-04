@@ -35,6 +35,8 @@ public class roomScript{
    
 //function that gets room object from javascript and creates new room object in java	
 	public static void makeRoom(ScriptObjectMirror room) {
+		String room_locked = "0";
+		boolean locked = toBool(room_locked);
 		
 		String room_essential = room.callMember("getRoom").toString();
 		String [] tokens = room_essential.split(",");
@@ -50,18 +52,22 @@ public class roomScript{
 		String [] connections = room_connections.split(",");
 		
 		//Prototype locked code
-		String room_locked = room.callMember("getLocked").toString();
-		room_locked = room_locked.replace("[", "");
-		room_locked = room_locked.replace("]", "");
-		boolean locked = toBool(room_locked);
+//		String room_locked = room.callMember("getLocked").toString();
+//		room_locked = room_locked.replace("[", "");
+//		room_locked = room_locked.replace("]", "");
+//		boolean locked = toBool(room_locked);
 		
 		String room_items = room.callMember("getItems").toString();
 		room_items = room_items.replace("[", "");
 		room_items = room_items.replace("]", "");
+		room_items = room_items.replaceAll(" ", "");
 		String [] items_prototype = room_items.split(",");
 		//Prototype inventory code
+		ArrayList<String> item_unlocks = new ArrayList<String>();
+		
+		item_unlocks.add(items_prototype[3]);  
 		ArrayList<Item> items = new ArrayList<Item>();
-		Item item_1 = new Item(items_prototype[0] , items_prototype[1] , Integer.parseInt(items_prototype[2]));
+		Item item_1 = new Item(items_prototype[0] , items_prototype[1], items_prototype[2], item_unlocks , Integer.parseInt(items_prototype[4]));
 		items.add(item_1);
 				
 		Room addRoom = new Room(name , description , detail , connections, locked, items);
