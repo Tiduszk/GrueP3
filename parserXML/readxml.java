@@ -40,8 +40,9 @@ public class readxml{
 	String item_name = "";
 	String item_description = "";
 	String item_type = "";
-	ArrayList<String> key_unlocks = new ArrayList<String>();
+	ArrayList<String> item_unlocks = new ArrayList<String>();
 	String item_uses = "";
+
 
 	/*Scanner input = new Scanner(System.in);
 	System.out.print("please enter xml input file: ");
@@ -101,17 +102,17 @@ public class readxml{
 			item_name = doc.getElementsByTagName("item_name").item(temp).getTextContent();
 			item_description = doc.getElementsByTagName("item_description").item(temp).getTextContent();
 			item_type = doc.getElementsByTagName("item_type").item(temp).getTextContent();
-			key_unlocks.add(doc.getElementsByTagName("unlocks").item(temp).getTextContent());
+			item_unlocks.add(doc.getElementsByTagName("unlocks").item(temp).getTextContent());
 			item_uses = doc.getElementsByTagName("item_uses").item(temp).getTextContent();
 			
 			String[] connections = {north,northeast,east,southeast,south,southwest,west,northwest, up, down};
 			
 			if(item_type.equalsIgnoreCase("key")) {
-				contents.add(new Key(item_name , item_description , Integer.parseInt(item_uses) , key_unlocks));
+				contents.add(new Item(item_name , item_description , item_type, item_unlocks,  Integer.parseInt(item_uses)));
 			}
 			
 			else {
-				contents.add(new Item(item_name , item_description , Integer.parseInt(item_uses)));
+				contents.add(new Item(item_name , item_description , item_type, item_unlocks,  Integer.parseInt(item_uses)));
 			}
 			
 			world.add(new Room(name , description , detail , connections , false , contents));
