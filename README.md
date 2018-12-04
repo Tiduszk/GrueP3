@@ -12,7 +12,7 @@ ubuntu installation:
 	After cloning repo or extrating to desired location, run following commands,
 	chmod 755 ubuntu_install.sh, and then ./ubuntu_install.sh.
 
-	To run the main program, just simply type ./run from terminal in location in the where
+	To run the main program, just simply type ./linux_run from terminal in location in the where
 	it was cloned or extracted.
 
 Windows installation:
